@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">obs</string>
+    <string name="target_app">ar.tvplayer.companion</string>
+    <string name="already_running">Target app is already running now.</string>
+    <string name="app_down">Target app has been down.</string>
+</resources>
