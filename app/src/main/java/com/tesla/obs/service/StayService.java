@@ -7,12 +7,17 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.tesla.obs.CacheManager;
 import com.tesla.obs.Helper;
 import com.tesla.obs.R;
 
 import androidx.annotation.Nullable;
 
 public class StayService extends Service {
+
+    public IBinder OnBind(Intent intent) {
+        return null;
+    }
 
     @Override
     public void onCreate() {
@@ -29,6 +34,7 @@ public class StayService extends Service {
         if(Helper.isTargetRunning(getApplicationContext(), getResources().getString(R.string.target_app))) {
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.already_running), Toast.LENGTH_SHORT).show();
         } else {
+            CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(R.string.target_app));
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.app_down), Toast.LENGTH_SHORT).show();
             while(true) {
                 if(Helper.isTargetRunning(getApplicationContext(), getResources().getString(R.string.target_app))) {
@@ -42,6 +48,8 @@ public class StayService extends Service {
         }
         return START_STICKY;
     }
+
+
 
     @Override
     public void onDestroy() {
