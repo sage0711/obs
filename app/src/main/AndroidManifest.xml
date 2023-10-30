@@ -30,15 +30,16 @@
             android:exported="false">
         </service>
 
-        <receiver android:enabled="true" android:name=".receiver.BootUpReceiver"
+
+        <receiver android:enabled="true" android:name=".receiver.StartupOnBootUpReceiver"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
-                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
-                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+<!--                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>-->
+<!--                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />-->
             </intent-filter>
         </receiver>
 

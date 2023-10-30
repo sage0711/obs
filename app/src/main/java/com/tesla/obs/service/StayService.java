@@ -23,19 +23,17 @@ public class StayService extends Service {
     private static final int NOTIFICATION_ID = 1; // You can choose any unique integer for the notification ID
     private Notification buildNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, String.valueOf(2))
-                .setContentTitle("Your Notification Title")
-                .setContentText("Your Notification Text")
+                .setContentTitle("Notification Title")
+                .setContentText("Notification Text")
                 .setPriority(NotificationCompat.PRIORITY_LOW);
 
         // Create a pending intent to open the main activity when the notification is clicked
-        Intent notificationIntent = new Intent(this, MainActivity.class);
+        Intent notificationIntent = new Intent(getApplicationContext(), MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(contentIntent);
 
         return builder.build();
     }
-
-
 
     @Override
     public void onCreate() {
@@ -64,15 +62,13 @@ public class StayService extends Service {
         }
 
         // Continue running as a foreground service
-        startForeground(NOTIFICATION_ID, buildNotification());
+        //startForeground(NOTIFICATION_ID, buildNotification());
 
         // Schedule the next monitoring check after a short delay
         scheduleMonitoringCheck();
 
         return START_STICKY;
     }
-
-
 
 //    // Helper method to schedule the app restart after a delay
 //    private void scheduleAppRestart() {
@@ -113,12 +109,14 @@ public class StayService extends Service {
         Handler handler = new Handler();
         handler.postDelayed(() -> {
             if (!Helper.isTargetRunning(getApplicationContext(), getResources().getString(R.string.target_app))) {
+                CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(R.string.target_app));
+                CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(R.string.origin_app));
                 // The target app is not running, initiate restart
                 restartTargetApp();
             }
             // Schedule the next monitoring check after a short delay
             scheduleMonitoringCheck();
-        }, 2000); // Delay in milliseconds (e.g., 2 seconds)
+        }, 1000); // Delay in milliseconds (e.g., 2 seconds)
     }
 
     @Override
