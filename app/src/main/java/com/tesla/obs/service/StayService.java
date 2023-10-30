@@ -15,9 +15,6 @@ import androidx.annotation.Nullable;
 
 public class StayService extends Service {
 
-    public IBinder OnBind(Intent intent) {
-        return null;
-    }
 
     @Override
     public void onCreate() {
