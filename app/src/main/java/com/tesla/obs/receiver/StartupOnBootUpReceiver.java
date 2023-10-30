@@ -7,7 +7,7 @@ import android.content.Intent;
 
 import com.tesla.obs.MainActivity;
 
-public class BootUpReceiver extends BroadcastReceiver {
+public class StartupOnBootUpReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
