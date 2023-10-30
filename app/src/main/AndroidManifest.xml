@@ -14,24 +14,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Obs"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <receiver android:enabled="true" android:name=".BootUpReceiver"
+        <service
+            android:name="com.tesla.obs.service.StayService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
+
+        <receiver android:enabled="true" android:name=".receiver.BootUpReceiver"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
+
     </application>
 </manifest>

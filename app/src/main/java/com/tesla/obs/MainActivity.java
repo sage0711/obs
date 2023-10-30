@@ -1,6 +1,6 @@
 package com.tesla.obs;
 
-import com.tesla.obs.StayService;
+import com.tesla.obs.service.StayService;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.tesla.obs;
+package com.tesla.obs.service;
 
 import android.app.Service;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.tesla.obs.Helper;
+import com.tesla.obs.R;
 
 import androidx.annotation.Nullable;
 
