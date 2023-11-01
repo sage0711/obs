@@ -2,6 +2,10 @@
     <string name="app_name">obs</string>
     <string name="origin_app">com.tesla.obs</string>
     <string name="target_app">ar.tvplayer.companion</string>
+    <string name="real_target_app">ar.tvplayer.tv</string>
+    <string name="temp_target_app">ar.tvplayer.companion</string>
     <string name="already_running">Target app is already running now.</string>
     <string name="app_down">Target app has been down.</string>
+    <string name="https_google_com">https://google.com/</string>
+    <string name="memory_cached">Memory has been cached!</string>
 </resources>

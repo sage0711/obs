@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -29,7 +30,6 @@
             android:enabled="true"
             android:exported="false">
         </service>
-
 
         <receiver android:enabled="true" android:name=".receiver.StartupOnBootUpReceiver"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
