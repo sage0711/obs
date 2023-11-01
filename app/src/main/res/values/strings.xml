@@ -7,5 +7,5 @@
     <string name="already_running">Target app is already running now.</string>
     <string name="app_down">Target app has been down.</string>
     <string name="https_google_com">https://google.com/</string>
-    <string name="memory_cached">Memory has been cached!</string>
+    <string name="memory_cached">Memory cache has been cleared!</string>
 </resources>
