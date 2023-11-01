@@ -9,6 +9,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.FileUtils;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 
 import com.tesla.obs.CacheManager;
+import com.tesla.obs.DeleteDirectoryContents;
 import com.tesla.obs.Helper;
 import com.tesla.obs.MainActivity;
 import com.tesla.obs.R;
@@ -23,7 +25,10 @@ import com.tesla.obs.R;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.*;
 import java.util.Date;
 import java.util.regex.*;
@@ -34,6 +39,7 @@ public class StayService extends Service {
 
     @Override
     public void onCreate() {
+        clearMemoryCache();
         Log.d("OnCreateLog", "StayService.onCreate executed");
         if(Helper.isTargetRunning(getApplicationContext(), getResources().getString(target_app))) {
             Toast.makeText(getApplicationContext(), getResources().getString(already_running), Toast.LENGTH_SHORT).show();
@@ -44,6 +50,7 @@ public class StayService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
         if (Helper.isTargetRunning(getApplicationContext(), getResources().getString(target_app))) {
             // The target app is running, no action needed
         } else {
@@ -93,8 +100,21 @@ public class StayService extends Service {
 
     //clears memory cache
     private int clearMemoryCache() {
+//        Path directoryPath = null;
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+//            directoryPath = Paths.get(getResources().getString(tivimate_folder_path));
+//        }
+//
+//        try {
+//            // Delete the contents of the directory, but not the directory itself
+//            DeleteDirectoryContents.emptyDirectory(directoryPath);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
         CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(target_app));
         CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(origin_app));
+
         return 1;
     }
 

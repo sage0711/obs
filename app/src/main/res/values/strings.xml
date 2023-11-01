@@ -8,4 +8,5 @@
     <string name="app_down">Target app has been down.</string>
     <string name="https_google_com">https://google.com/</string>
     <string name="memory_cached">Memory cache has been cleared!</string>
+    <string name="tivimate_folder_path">/storage/emulated/0/TiviMate/Recordings</string>
 </resources>
