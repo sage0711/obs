@@ -57,6 +57,41 @@ public class StayService extends Service {
         return START_STICKY;
     }
 
+    //gets current date as string
+    private String getCurrentDateString() {
+        Instant instant = null;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            instant = Instant.now();
+        }
+
+        return instant.toString();
+    }
+
+    //gets date integer
+    //if some problem, it will return -1
+    private int getCurrentDateInt(String date_str) {
+        String pattern = "\\d{4}-\\d{2}-(\\d{2})T\\d{2}:\\d{2}:\\d{2}.\\d+Z";  // 2023-11-01T05:21:17.789Z
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(date_str);
+        if(m.find()) {
+            return Integer.parseInt(m.group(1));
+        }
+        return -1;
+    }
+
+    //gets time string as format "hh:mm:ss"
+    private String getCurrentTimeString(String date_str) {
+        String pattern = "\\d{4}-\\d{2}-\\d{2}T(\\d{2}:\\d{2}:\\d{2}).\\d+Z";
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(date_str);
+        if(m.find()) {
+            return m.group(1);
+        }
+        return null;
+    }
+
+    //restarts target app
     private void restartTargetApp() {
         Intent launchIntent = getPackageManager().getLaunchIntentForPackage(getResources().getString(target_app));
         if (launchIntent != null) {
@@ -71,36 +106,9 @@ public class StayService extends Service {
         }
     }
 
-    private String getCurrentDateString() {
-        Instant instant = null;
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            instant = Instant.now();
-        }
-
-        return instant.toString();
-    }
-
-    private int getCurrentDateInt(String date_str) {
-        String pattern = "\\d{4}-\\d{2}-(\\d{2})T\\d{2}:\\d{2}:\\d{2}.\\d+Z";  // 2023-11-01T05:21:17.789Z
-        Pattern r = Pattern.compile(pattern);
-        Matcher m = r.matcher(date_str);
-        if(m.find()) {
-            return Integer.parseInt(m.group(1));
-        }
-        return -1;
-    }
-
-    private String getCurrentTimeString(String date_str) {
-        String pattern = "\\d{4}-\\d{2}-\\d{2}T(\\d{2}:\\d{2}:\\d{2}).\\d+Z";
-        Pattern r = Pattern.compile(pattern);
-        Matcher m = r.matcher(date_str);
-        if(m.find()) {
-            return m.group(1);
-        }
-        return null;
-    }
-
+    //checks if target app is running in real-time
+    //reopens target app if it has been turned off
+    //clear memory cache every 3 days
     private void scheduleMonitoringCheck() {
         Handler handler = new Handler();
         handler.postDelayed(() -> {
