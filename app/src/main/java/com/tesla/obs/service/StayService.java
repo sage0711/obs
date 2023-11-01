@@ -91,6 +91,13 @@ public class StayService extends Service {
         return null;
     }
 
+    //clears memory cache
+    private int clearMemoryCache() {
+        CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(target_app));
+        CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(origin_app));
+        return 1;
+    }
+
     //restarts target app
     private void restartTargetApp() {
         Intent launchIntent = getPackageManager().getLaunchIntentForPackage(getResources().getString(target_app));
@@ -115,8 +122,7 @@ public class StayService extends Service {
 
             if (getCurrentDateInt(getCurrentDateString()) % 3 == 0) {
                 if (getCurrentTimeString(getCurrentDateString()) == "00:00:00" || getCurrentTimeString(getCurrentDateString()) == "00:00:01") {
-                    CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(target_app));
-                    CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(origin_app));
+                    clearMemoryCache();
                     Toast.makeText(
                             getApplicationContext(),
                             getResources().getString(memory_cached),
@@ -126,8 +132,7 @@ public class StayService extends Service {
             }
 
             if (!Helper.isTargetRunning(getApplicationContext(), getResources().getString(target_app))) {
-                CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(target_app));
-                CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(origin_app));
+                clearMemoryCache();
                 // The target app is not running, initiate restart
                 restartTargetApp();
             }
