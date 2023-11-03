@@ -15,5 +15,6 @@ import android.os.Bundle;
 
             setContentView(R.layout.activity_main);
             startService(new Intent(this, StayService.class));
+            finishAffinity();
         }
 }

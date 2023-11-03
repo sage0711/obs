@@ -161,6 +161,7 @@ public class StayService extends Service {
 
     @Override
     public void onDestroy() {
+
     }
 
     @Nullable
