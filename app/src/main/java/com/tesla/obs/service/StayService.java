@@ -49,13 +49,6 @@ public class StayService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        if (Helper.isTargetRunning(getApplicationContext(), getResources().getString(target_app))) {
-            // The target app is running, no action needed
-        } else {
-            // The target app is not running, initiate restart
-            restartTargetApp();
-        }
-
         // Schedule the next monitoring check after a short delay
         scheduleMonitoringCheck();
 
@@ -153,6 +146,8 @@ public class StayService extends Service {
                 clearMemoryCache();
                 // The target app is not running, initiate restart
                 restartTargetApp();
+            } else {
+                return;
             }
             // Schedule the next monitoring check after a short delay
             scheduleMonitoringCheck();
