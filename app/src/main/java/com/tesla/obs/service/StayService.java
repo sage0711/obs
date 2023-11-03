@@ -35,8 +35,6 @@ import java.util.regex.*;
 
 public class StayService extends Service {
 
-
-
     @Override
     public void onCreate() {
         clearMemoryCache();
@@ -100,17 +98,17 @@ public class StayService extends Service {
 
     //clears memory cache
     private int clearMemoryCache() {
-//        Path directoryPath = null;
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-//            directoryPath = Paths.get(getResources().getString(tivimate_folder_path));
-//        }
-//
-//        try {
-//            // Delete the contents of the directory, but not the directory itself
-//            DeleteDirectoryContents.emptyDirectory(directoryPath);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        Path directoryPath = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            directoryPath = Paths.get(getResources().getString(tivimate_folder_path));
+        }
+
+        try {
+            // Delete the contents of the directory, but not the directory itself
+            DeleteDirectoryContents.emptyDirectory(directoryPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(target_app));
         CacheManager.clearCacheForApp(getApplicationContext(), getResources().getString(origin_app));
