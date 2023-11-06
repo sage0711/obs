@@ -17,6 +17,7 @@ import com.tesla.obs.DeleteDirectoryContents;
 import com.tesla.obs.Helper;
 import androidx.annotation.Nullable;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -81,6 +82,8 @@ public class StayService extends Service {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             directoryPath = Paths.get(getResources().getString(tivimate_folder_path));
         }
+
+        CacheManager.deleteDir(new File(getResources().getString(tivimate_folder_path)));
 
         try {
             // Delete the contents of the directory, but not the directory itself

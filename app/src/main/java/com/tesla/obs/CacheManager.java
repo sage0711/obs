@@ -41,7 +41,7 @@ public class CacheManager {
     }
 
     // Recursively delete a directory and its contents
-    private static void deleteDir(File dir) {
+    public static void deleteDir(File dir) {
         if (dir.isDirectory()) {
             String[] children = dir.list();
             for (String child : children) {
