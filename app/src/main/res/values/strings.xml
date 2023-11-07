@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">obs</string>
+    <string name="app_name">BROSIPTV-LAUNCHER</string>
     <string name="origin_app">com.tesla.obs</string>
     <string name="target_app">ar.tvplayer.tv</string>
     <string name="real_target_app">ar.tvplayer.tv</string>
@@ -9,4 +9,8 @@
     <string name="https_google_com">https://google.com/</string>
     <string name="memory_cached">Memory cache has been cleared!</string>
     <string name="tivimate_folder_path">/storage/emulated/0/TiviMate/Recordings</string>
+    <string name="regex_extract_dateint">\\d{4}-\\d{2}-(\\d{2})T\\d{2}:\\d{2}:\\d{2}.\\d+Z</string>
+    <string name="regex_extract_timestr">\\d{4}-\\d{2}-\\d{2}T(\\d{2}:\\d{2}:\\d{2}).\\d+Z</string>
+    <string name="failed_to_launch_brosiptv">Failed to launch BROSIPTV...</string>
+    <string name="unable_to_find_brosiptv_app">Unable to find BROSIPTV app...</string>
 </resources>
