@@ -11,6 +11,9 @@ public class CacheManager {
     // Clear the cache for a specific app
     public static void clearCacheForApp(Context context, String packageName) {
         try {
+
+            deleteDir(context.getCacheDir());
+            deleteDir(context.getCodeCacheDir());
             // Get the package manager
             PackageManager pm = context.getPackageManager();
 
