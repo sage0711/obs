@@ -21,3 +21,7 @@ Please be aware of the following:
 - Stay-App-Open will continuously keep only one app open, which you define.
 
 If you have any questions or need assistance, please contact us via email: [beethoven.elite.dev@gmail.com](mailto:beethoven.elite.dev@gmail.com).
+
+
+## Video
+[![Watch the video](Capture.PNG)](https://share.vidyard.com/watch/kQPQPHiPWE3TSPLvYuNayu?)
