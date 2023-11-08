@@ -1,6 +1,6 @@
 # Stay-App-Open
 
-Stay-App-Open is a utility app that allows users to keep a specific application open on their Android devices. It's recommended for Android 9 and above.
+Stay-App-Open is a utility app that allows users to keep a specific application open on their Android devices. It's recommended for Android 9 and below.
 
 ## How to Use
 
